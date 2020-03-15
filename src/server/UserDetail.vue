@@ -1,18 +1,27 @@
 <template>
   <div>
-    <p>First Name: {{name}}</p>
+    <p>First Name: {{ switchName() }}</p> <button @click="resetName">Reset</button>
     <p>Last Name: Doe</p>
     <p>Age: 22</p>
   </div>
 </template>
 
 <script>
-// Vue.use(require('vue-faker'));
 export default {
-  data() {
-    return {
-      name: 'John'
-    };
+  props: {
+    name: {
+      type: String,
+      // required: true,
+      default: 'Max',
+    }
+  },
+  methods: {
+    switchName(){
+      return this.name.split('').reverse().join('|');
+    },
+    resetName(){
+      this.name = 'name reset'
+    }
   }
 };
 </script>
