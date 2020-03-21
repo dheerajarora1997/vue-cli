@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <p>First Name: {{ switchName() }}</p> <button @click="resetName">Reset</button>
+  <div class="jumbotron bg-info">
+    <p>First Name: {{ switchName() }}</p>
     <p>Last Name: Doe</p>
     <p>Age: 22</p>
+    <button @click="resetName">Reset</button>
   </div>
 </template>
 
@@ -17,11 +18,13 @@ export default {
   },
   methods: {
     switchName(){
-      return this.name.split('').reverse().join('|');
+      // return this.name.split('').reverse().join('|');
+      return this.name.split('').join('|');
     },
     resetName(){
-      this.name = 'name reset'
-    }
+      this.name = 'name reset';
+      this.$emit('nameWasReset', this.name);
+      }
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="jumbotron bg-secondary">
     <p>Contact No: 1234567890</p>
     <p>Email No: johndoe@domain.com</p>
   </div>

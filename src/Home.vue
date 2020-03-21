@@ -1,10 +1,19 @@
 <template>
   <div>
-    <div class="card">
+    <div class="jumbotron">
+      <p>The Name is:  {{name}}</p>
       <button @click="changeName">Change Name</button>
-    <user-detail :name="name"></user-detail>
-    <user-detail></user-detail>
-    <user-info></user-info>
+      <div class="row">
+        <div class="col-sm-6">
+          <user-detail :name="name" @nameWasReset="name = $event "></user-detail>
+        </div>
+        <div class="col-sm-6 d-none">
+          <user-detail></user-detail>
+        </div>
+      <div class="col-sm-6">
+      <user-info></user-info>
+      </div>
+      </div>
     </div>
   </div>
 </template>
@@ -12,18 +21,17 @@
 <script>
 import ServerStatus from "./ServerStatus.vue";
 import UserInfo from "./server/UserInfo";
-import UserDetail from "./server/UserDetail"
+import UserDetail from "./server/UserDetail";
 export default {
-  data (){
-    return{
-      name: 'John',
-    }
+  data() {
+    return {
+      name: "John"
+    };
   },
   methods: {
-    changeName (){
-      this.name = 'changed name';
+    changeName() {
+      this.name = "changed name";
     }
-
   },
   components: {
     "app-server-status": ServerStatus,
